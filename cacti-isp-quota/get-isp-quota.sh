@@ -2,9 +2,21 @@
 
 # Get usage information from Internode's web page.  
 #
+# Setup to run once every half hour.
+#
 
-name=$1
-password=$2
+config_file="/etc/cacti/ISP_Quota.conf"
 
-wget -q -O - --post-data "username=$name&password=$password" https://accounts.internode.on.net/cgi-bin/padsl-usage | gawk '{print "usage:"$1" limit:"$2}'
+isp_index=$1
+
+temp=( `grep $isp_index $config_file` )
+isp_name=${temp[1]}
+username=${temp[2]}
+password=${temp[3]}
+
+case $isp_name in
+    (Internode|internode)
+        wget -q -O - --post-data "username=$username&password=$password" https://accounts.internode.on.net/cgi-bin/padsl-usage | gawk '{print "usage:"$1" limit:"$2}'
+        ;;
+esac
 

@@ -1,6 +1,11 @@
 Put get-isp-quota int <path_cacti>/scripts/
+Copy ISP_Quota.conf to /etc/cacti, and change ownership and permissions
+so that Cacti can read it, and no other user can.  Edit it to contain
+username and password for the ISP accounts you want to monitor.
 
-Click on Import Templates after opening Cacti in your web browser and import the xml file.
+Click on Import Templates after opening Cacti in your web browser and
+import the xml file.
 
-Create a host and a graph in the usual way, supplying you username and password.
+Create a host and a graph in the usual way, supplying you username and
+password.
 

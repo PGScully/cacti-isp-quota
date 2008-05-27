@@ -192,40 +192,26 @@
 		</items>
 		<data>
 			<item_000>
-				<data_input_field_id>hash_070016c4f9c144516b90ea922eb62ca7cec1d7</data_input_field_id>
-				<t_value>on</t_value>
-				<value></value>
-			</item_000>
-			<item_001>
 				<data_input_field_id>hash_0700167185fd74fa24bf61996acc5b6fe26b19</data_input_field_id>
 				<t_value>on</t_value>
 				<value></value>
-			</item_001>
+			</item_000>
 		</data>
 	</hash_010016c0015756b284ab7721b5249d7c9ae5fb>
 	<hash_0300160b63c185386d40b01dbf455b419757fd>
 		<name>ISP - Get Quota</name>
 		<type_id>1</type_id>
-		<input_string>/bin/bash &lt;path_cacti&gt;/scripts/get-isp-quota.sh &lt;login&gt; &lt;password&gt;</input_string>
+		<input_string>/bin/bash &lt;path_cacti&gt;/scripts/get-isp-quota.sh &lt;ISP_Key&gt;</input_string>
 		<fields>
 			<hash_0700167185fd74fa24bf61996acc5b6fe26b19>
-				<name>ISP Login</name>
+				<name>ISP key in config file</name>
 				<update_rra></update_rra>
 				<regexp_match></regexp_match>
 				<allow_nulls></allow_nulls>
-				<type_code>snmp_username</type_code>
+				<type_code></type_code>
 				<input_output>in</input_output>
-				<data_name>login</data_name>
+				<data_name>ISP_Key</data_name>
 			</hash_0700167185fd74fa24bf61996acc5b6fe26b19>
-			<hash_070016c4f9c144516b90ea922eb62ca7cec1d7>
-				<name>ISP Password</name>
-				<update_rra></update_rra>
-				<regexp_match></regexp_match>
-				<allow_nulls></allow_nulls>
-				<type_code>snmp_password</type_code>
-				<input_output>in</input_output>
-				<data_name>password</data_name>
-			</hash_070016c4f9c144516b90ea922eb62ca7cec1d7>
 			<hash_070016058a838ae8a7a97b1a3ba1de8fcfba67>
 				<name>Quota Used</name>
 				<update_rra>on</update_rra>
