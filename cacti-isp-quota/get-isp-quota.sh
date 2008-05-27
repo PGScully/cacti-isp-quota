@@ -16,7 +16,7 @@ password=${temp[3]}
 
 case $isp_name in
     (Internode|internode)
-        wget -q -O - --post-data "username=$username&password=$password" https://accounts.internode.on.net/cgi-bin/padsl-usage | gawk '{print "usage:"$1" limit:"$2}'
+        wget -q -O - --post-data "username=${username}&password=${password}" https://accounts.internode.on.net/cgi-bin/padsl-usage | gawk '{print "usage:"$1" limit:"$2" unmetered:"$4}'
         ;;
 esac
 
