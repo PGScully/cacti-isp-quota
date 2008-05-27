@@ -1,0 +1,6 @@
+Put get-isp-quota int <path_cacti>/scripts/
+
+Click on Import Templates after opening Cacti in your web browser and import the xml file.
+
+Create a host and a graph in the usual way, supplying you username and password.
+
