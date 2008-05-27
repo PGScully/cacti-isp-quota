@@ -105,6 +105,71 @@
 				<hard_return>on</hard_return>
 				<sequence>5</sequence>
 			</hash_10001691cf2e24ff403fd53b246cddf947a948>
+			<hash_1000164b0ffbd6ce5760453484d2c42dd63678>
+				<task_item_id>hash_080016f3d599ce67233f957afe2d79ab6e2215</task_item_id>
+				<color_id>00FF00</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>8</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Unmetered</text_format>
+				<hard_return></hard_return>
+				<sequence>6</sequence>
+			</hash_1000164b0ffbd6ce5760453484d2c42dd63678>
+			<hash_1000165575627426b1a0ce68af4c5307294e57>
+				<task_item_id>hash_080016f3d599ce67233f957afe2d79ab6e2215</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>7</sequence>
+			</hash_1000165575627426b1a0ce68af4c5307294e57>
+			<hash_10001667fe7052532a3ceb7379ee810ae35f2a>
+				<task_item_id>hash_080016f3d599ce67233f957afe2d79ab6e2215</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>2</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Min:</text_format>
+				<hard_return></hard_return>
+				<sequence>8</sequence>
+			</hash_10001667fe7052532a3ceb7379ee810ae35f2a>
+			<hash_1000169eec04f5a35d96a46363da02931b7c21>
+				<task_item_id>hash_080016f3d599ce67233f957afe2d79ab6e2215</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Ave:</text_format>
+				<hard_return></hard_return>
+				<sequence>9</sequence>
+			</hash_1000169eec04f5a35d96a46363da02931b7c21>
+			<hash_1000161aad09f33790e32790bc068750c71e04>
+				<task_item_id>hash_080016f3d599ce67233f957afe2d79ab6e2215</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Max:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>10</sequence>
+			</hash_1000161aad09f33790e32790bc068750c71e04>
 			<hash_100016d6924dbe25b29b0a09b6c139169d69f3>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
 				<color_id>FF0000</color_id>
@@ -114,9 +179,9 @@
 				<cdef_id>0</cdef_id>
 				<value></value>
 				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
-				<text_format>Total</text_format>
+				<text_format>Quota</text_format>
 				<hard_return></hard_return>
-				<sequence>6</sequence>
+				<sequence>12</sequence>
 			</hash_100016d6924dbe25b29b0a09b6c139169d69f3>
 			<hash_100016d53a644c2bfeff8640a3d5e5fb90d99c>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
@@ -129,7 +194,7 @@
 				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Current:</text_format>
 				<hard_return></hard_return>
-				<sequence>7</sequence>
+				<sequence>13</sequence>
 			</hash_100016d53a644c2bfeff8640a3d5e5fb90d99c>
 		</items>
 		<inputs>
@@ -145,6 +210,12 @@
 				<column_name>task_item_id</column_name>
 				<items>hash_000016d6924dbe25b29b0a09b6c139169d69f3|hash_000016d53a644c2bfeff8640a3d5e5fb90d99c</items>
 			</hash_0900165d7ce54b8cf3a8f8b840a8ee107f2335>
+			<hash_09001692b02518031f69ec6441edee232872b0>
+				<name>Data Source [unmetered]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_0000164b0ffbd6ce5760453484d2c42dd63678|hash_0000165575627426b1a0ce68af4c5307294e57|hash_00001667fe7052532a3ceb7379ee810ae35f2a|hash_0000169eec04f5a35d96a46363da02931b7c21|hash_0000161aad09f33790e32790bc068750c71e04</items>
+			</hash_09001692b02518031f69ec6441edee232872b0>
 		</inputs>
 	</hash_0000161ad36ca6db5ad87c2ce6028f07d35251>
 	<hash_010016c0015756b284ab7721b5249d7c9ae5fb>
@@ -189,6 +260,20 @@
 				<t_data_input_field_id></t_data_input_field_id>
 				<data_input_field_id>hash_070016b6582c7b08fb4da76af4901ee1aebee5</data_input_field_id>
 			</hash_080016f20fc863c490db998df9466f5ffb7d76>
+			<hash_080016f3d599ce67233f957afe2d79ab6e2215>
+				<t_data_source_name></t_data_source_name>
+				<data_source_name>unmetered</data_source_name>
+				<t_rrd_minimum></t_rrd_minimum>
+				<rrd_minimum>0</rrd_minimum>
+				<t_rrd_maximum></t_rrd_maximum>
+				<rrd_maximum>1000000</rrd_maximum>
+				<t_data_source_type_id></t_data_source_type_id>
+				<data_source_type_id>1</data_source_type_id>
+				<t_rrd_heartbeat></t_rrd_heartbeat>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<t_data_input_field_id></t_data_input_field_id>
+				<data_input_field_id>hash_0700167b20b5dd36aa2d71bb959fb6c433a02e</data_input_field_id>
+			</hash_080016f3d599ce67233f957afe2d79ab6e2215>
 		</items>
 		<data>
 			<item_000>
@@ -212,6 +297,15 @@
 				<input_output>in</input_output>
 				<data_name>ISP_Key</data_name>
 			</hash_0700167185fd74fa24bf61996acc5b6fe26b19>
+			<hash_0700167b20b5dd36aa2d71bb959fb6c433a02e>
+				<name>Unmetered Data</name>
+				<update_rra>on</update_rra>
+				<regexp_match></regexp_match>
+				<allow_nulls></allow_nulls>
+				<type_code></type_code>
+				<input_output>out</input_output>
+				<data_name>unmetered</data_name>
+			</hash_0700167b20b5dd36aa2d71bb959fb6c433a02e>
 			<hash_070016058a838ae8a7a97b1a3ba1de8fcfba67>
 				<name>Quota Used</name>
 				<update_rra>on</update_rra>
