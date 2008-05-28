@@ -23,7 +23,8 @@ case $isp_name in
         usage=${temp[0]}
         limit=${temp[1]}
         unmetered=0
-        echo "usage:$usage limit:$limit unmetered:$unmetered"
+        uploads=0
+        echo "usage:$usage limit:$limit unmetered:$unmetered uploads:$uploads"
         ;;
 esac
 
