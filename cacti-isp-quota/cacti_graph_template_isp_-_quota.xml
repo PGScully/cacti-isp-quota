@@ -126,7 +126,7 @@
 				<consolidation_function_id>4</consolidation_function_id>
 				<cdef_id>0</cdef_id>
 				<value></value>
-				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Current:</text_format>
 				<hard_return></hard_return>
 				<sequence>9</sequence>
@@ -139,7 +139,7 @@
 				<consolidation_function_id>2</consolidation_function_id>
 				<cdef_id>0</cdef_id>
 				<value></value>
-				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Min:</text_format>
 				<hard_return></hard_return>
 				<sequence>10</sequence>
@@ -152,7 +152,7 @@
 				<consolidation_function_id>1</consolidation_function_id>
 				<cdef_id>0</cdef_id>
 				<value></value>
-				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Ave:</text_format>
 				<hard_return></hard_return>
 				<sequence>12</sequence>
@@ -165,7 +165,7 @@
 				<consolidation_function_id>3</consolidation_function_id>
 				<cdef_id>0</cdef_id>
 				<value></value>
-				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Max:</text_format>
 				<hard_return>on</hard_return>
 				<sequence>13</sequence>
@@ -196,6 +196,45 @@
 				<hard_return></hard_return>
 				<sequence>16</sequence>
 			</hash_100016d53a644c2bfeff8640a3d5e5fb90d99c>
+			<hash_1000167898ca5838a5a7ab7b2becae092844dd>
+				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>2</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
+				<text_format>Min:</text_format>
+				<hard_return></hard_return>
+				<sequence>17</sequence>
+			</hash_1000167898ca5838a5a7ab7b2becae092844dd>
+			<hash_10001644a7d2603c16b2058de09813c509aad3>
+				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
+				<text_format>Ave:</text_format>
+				<hard_return></hard_return>
+				<sequence>18</sequence>
+			</hash_10001644a7d2603c16b2058de09813c509aad3>
+			<hash_100016025105f9392dd972d8f74ed942d99645>
+				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
+				<text_format>Max:</text_format>
+				<hard_return></hard_return>
+				<sequence>19</sequence>
+			</hash_100016025105f9392dd972d8f74ed942d99645>
 		</items>
 		<inputs>
 			<hash_0900166b128fe2939dd4f9cbce1a0edf9645a8>
@@ -208,7 +247,7 @@
 				<name>Data Source [limit]</name>
 				<description></description>
 				<column_name>task_item_id</column_name>
-				<items>hash_000016d6924dbe25b29b0a09b6c139169d69f3|hash_000016d53a644c2bfeff8640a3d5e5fb90d99c</items>
+				<items>hash_000016d6924dbe25b29b0a09b6c139169d69f3|hash_000016d53a644c2bfeff8640a3d5e5fb90d99c|hash_0000167898ca5838a5a7ab7b2becae092844dd|hash_00001644a7d2603c16b2058de09813c509aad3|hash_000016025105f9392dd972d8f74ed942d99645</items>
 			</hash_0900165d7ce54b8cf3a8f8b840a8ee107f2335>
 			<hash_09001692b02518031f69ec6441edee232872b0>
 				<name>Data Source [unmetered]</name>
@@ -236,7 +275,7 @@
 				<t_data_source_name></t_data_source_name>
 				<data_source_name>usage</data_source_name>
 				<t_rrd_minimum></t_rrd_minimum>
-				<rrd_minimum>0</rrd_minimum>
+				<rrd_minimum>0.0</rrd_minimum>
 				<t_rrd_maximum></t_rrd_maximum>
 				<rrd_maximum>1000000</rrd_maximum>
 				<t_data_source_type_id></t_data_source_type_id>
@@ -250,7 +289,7 @@
 				<t_data_source_name></t_data_source_name>
 				<data_source_name>limit</data_source_name>
 				<t_rrd_minimum></t_rrd_minimum>
-				<rrd_minimum>0</rrd_minimum>
+				<rrd_minimum>0.0</rrd_minimum>
 				<t_rrd_maximum></t_rrd_maximum>
 				<rrd_maximum>1000000</rrd_maximum>
 				<t_data_source_type_id></t_data_source_type_id>
@@ -264,7 +303,7 @@
 				<t_data_source_name></t_data_source_name>
 				<data_source_name>unmetered</data_source_name>
 				<t_rrd_minimum></t_rrd_minimum>
-				<rrd_minimum>0</rrd_minimum>
+				<rrd_minimum>0.0</rrd_minimum>
 				<t_rrd_maximum></t_rrd_maximum>
 				<rrd_maximum>1000000</rrd_maximum>
 				<t_data_source_type_id></t_data_source_type_id>
