@@ -22,10 +22,8 @@ case $isp_name in
         temp=( `wget -q -O - --post-data "username=${username}&password=${password}" https://accounts.internode.on.net/cgi-bin/padsl-usage` ) 
         usage=${temp[0]}
         limit=${temp[1]}
-        rollover=${temp[2]}
-        unknown=${temp[3]}
         unmetered=0
-        echo "usage:$usage limit:$limit unmetered:$unmetered rollover:$rollover unknown:$unknown"
+        echo "usage:$usage limit:$limit unmetered:$unmetered"
         ;;
 esac
 
