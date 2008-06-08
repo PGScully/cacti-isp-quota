@@ -6,6 +6,6 @@ username and password for the ISP accounts you want to monitor.
 Click on Import Templates after opening Cacti in your web browser and
 import the xml file.
 
-Create a host and a graph in the usual way, supplying you username and
-password.
+Create a host and a graph in the usual way, supplying the index ID from
+the ISP_Quota.conf file.
 
