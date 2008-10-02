@@ -19,7 +19,7 @@ password=${temp[3]}
 
 case $isp_name in
     (Internode|internode)
-        temp=( `wget -q -O - --post-data "username=${username}&password=${password}" https://accounts.internode.on.net/cgi-bin/padsl-usage` ) 
+        temp=( `wget -q -O - --post-data "username=${username}&password=${password}" https://customer-webtools-api.internode.on.net/cgi-bin/padsl-usage` ) 
         usage=${temp[0]}
         limit=${temp[1]}
         unmetered=0

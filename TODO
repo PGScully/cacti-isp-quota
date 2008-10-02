@@ -2,4 +2,5 @@ TO DO
 
 * Add support for other ISPs
 
-* Convert to Perl so it can run on Windows?
+* Convert to PHP and add query support to list all configured ISPs.
+

@@ -37,7 +37,7 @@
 			<t_unit_exponent_value></t_unit_exponent_value>
 			<unit_exponent_value></unit_exponent_value>
 			<t_vertical_label></t_vertical_label>
-			<vertical_label>Gigabytes</vertical_label>
+			<vertical_label>Data Transferred</vertical_label>
 		</graph>
 		<items>
 			<hash_100016cf9ba08c369d944ff71f5fb13be17ccf>
@@ -45,7 +45,7 @@
 				<color_id>4444FF</color_id>
 				<alpha>E5</alpha>
 				<graph_type_id>7</graph_type_id>
-				<consolidation_function_id>1</consolidation_function_id>
+				<consolidation_function_id>4</consolidation_function_id>
 				<cdef_id>hash_0500168925c98cdbeea818e7aef2baf8455428</cdef_id>
 				<value></value>
 				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
@@ -110,7 +110,7 @@
 				<color_id>00CF00</color_id>
 				<alpha>E5</alpha>
 				<graph_type_id>8</graph_type_id>
-				<consolidation_function_id>1</consolidation_function_id>
+				<consolidation_function_id>4</consolidation_function_id>
 				<cdef_id>hash_0500168925c98cdbeea818e7aef2baf8455428</cdef_id>
 				<value></value>
 				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
@@ -173,9 +173,9 @@
 			<hash_1000169f5af25921c3c5f588f0f22052a78531>
 				<task_item_id>hash_080016672b1ced9560c18dbc5c537eda044eb0</task_item_id>
 				<color_id>F5F800</color_id>
-				<alpha>FF</alpha>
+				<alpha>B2</alpha>
 				<graph_type_id>5</graph_type_id>
-				<consolidation_function_id>1</consolidation_function_id>
+				<consolidation_function_id>4</consolidation_function_id>
 				<cdef_id>hash_0500168925c98cdbeea818e7aef2baf8455428</cdef_id>
 				<value></value>
 				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
@@ -235,18 +235,31 @@
 				<hard_return>on</hard_return>
 				<sequence>15</sequence>
 			</hash_100016b7faa2fdd77659c5bd034f408f35fb6d>
+			<hash_100016777a7732fb9506ca01b81bd21c7947fd>
+				<task_item_id>0</task_item_id>
+				<color_id>000000</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>4</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>hash_050016a7428ead4dd854cf993c620511509caa</cdef_id>
+				<value></value>
+				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format></text_format>
+				<hard_return></hard_return>
+				<sequence>16</sequence>
+			</hash_100016777a7732fb9506ca01b81bd21c7947fd>
 			<hash_1000162c00258e867999718311c780fe555cf7>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
 				<color_id>FF0000</color_id>
 				<alpha>FF</alpha>
 				<graph_type_id>5</graph_type_id>
-				<consolidation_function_id>1</consolidation_function_id>
+				<consolidation_function_id>4</consolidation_function_id>
 				<cdef_id>hash_0500168925c98cdbeea818e7aef2baf8455428</cdef_id>
 				<value></value>
 				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
 				<text_format>Quota</text_format>
 				<hard_return></hard_return>
-				<sequence>16</sequence>
+				<sequence>17</sequence>
 			</hash_1000162c00258e867999718311c780fe555cf7>
 			<hash_100016cac90ad8b532fe6824d0219c4d12f281>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
@@ -259,7 +272,7 @@
 				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Current:</text_format>
 				<hard_return></hard_return>
-				<sequence>17</sequence>
+				<sequence>18</sequence>
 			</hash_100016cac90ad8b532fe6824d0219c4d12f281>
 			<hash_100016569a9fd73dc3cfe138626097fcd89178>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
@@ -272,7 +285,7 @@
 				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Min:</text_format>
 				<hard_return></hard_return>
-				<sequence>18</sequence>
+				<sequence>19</sequence>
 			</hash_100016569a9fd73dc3cfe138626097fcd89178>
 			<hash_10001608c43a1d9b8b6798da236f7a0219c4b2>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
@@ -285,7 +298,7 @@
 				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Ave:</text_format>
 				<hard_return></hard_return>
-				<sequence>19</sequence>
+				<sequence>20</sequence>
 			</hash_10001608c43a1d9b8b6798da236f7a0219c4b2>
 			<hash_100016a801fbc757347d987347d9eff9d63a34>
 				<task_item_id>hash_080016f20fc863c490db998df9466f5ffb7d76</task_item_id>
@@ -297,29 +310,16 @@
 				<value></value>
 				<gprint_id>hash_06001619414480d6897c8731c7dc6c5310653e</gprint_id>
 				<text_format>Max:</text_format>
-				<hard_return></hard_return>
-				<sequence>20</sequence>
-			</hash_100016a801fbc757347d987347d9eff9d63a34>
-			<hash_100016777a7732fb9506ca01b81bd21c7947fd>
-				<task_item_id>hash_08001600dbec3d2af93443f948e82da9e8a111</task_item_id>
-				<color_id>000000</color_id>
-				<alpha>FF</alpha>
-				<graph_type_id>4</graph_type_id>
-				<consolidation_function_id>1</consolidation_function_id>
-				<cdef_id>hash_050016a7428ead4dd854cf993c620511509caa</cdef_id>
-				<value></value>
-				<gprint_id>hash_060016e9c43831e54eca8069317a2ce8c6f751</gprint_id>
-				<text_format></text_format>
-				<hard_return></hard_return>
+				<hard_return>on</hard_return>
 				<sequence>21</sequence>
-			</hash_100016777a7732fb9506ca01b81bd21c7947fd>
+			</hash_100016a801fbc757347d987347d9eff9d63a34>
 		</items>
 		<inputs>
 			<hash_0900166b128fe2939dd4f9cbce1a0edf9645a8>
 				<name>Data Source [usage]</name>
 				<description></description>
 				<column_name>task_item_id</column_name>
-				<items>hash_000016cf9ba08c369d944ff71f5fb13be17ccf|hash_0000164894f5de0c58df84516b3729daf73da5|hash_000016f7e252c2ef497433aabfa80e32ffcac7|hash_000016e398fccb780ae7265d5b6a7e2e41e538|hash_000016d35dede5418e3c3ad72385292518d25b|hash_000016777a7732fb9506ca01b81bd21c7947fd</items>
+				<items>hash_000016cf9ba08c369d944ff71f5fb13be17ccf|hash_0000164894f5de0c58df84516b3729daf73da5|hash_000016f7e252c2ef497433aabfa80e32ffcac7|hash_000016e398fccb780ae7265d5b6a7e2e41e538|hash_000016d35dede5418e3c3ad72385292518d25b</items>
 			</hash_0900166b128fe2939dd4f9cbce1a0edf9645a8>
 			<hash_090016a6e0d42357de67ee79c5807494775eb2>
 				<name>Data Source [uploads]</name>
