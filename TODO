@@ -1,6 +1,8 @@
 TO DO
 
-* Add support for other ISPs
+* Add support for other ISPs.
 
-* Convert to PHP and add query support to list all configured ISPs.
+* Add query support to list all configured ISPs.
+
+* Consider converting to PHP.
 
