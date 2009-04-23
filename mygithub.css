@@ -1,0 +1,98 @@
+BODY {
+	background:   #fdf5e6;
+	margin-left:  10%;
+	margin-right: 10%;
+	color:        #000000;
+}
+
+A:link {
+	text-decoration: none;
+	color: #000070;
+}
+
+A:hover {
+	text-decoration: none;
+	color: #000070;
+        background-color: #fde5b9;
+}
+
+A:visited {
+	text-decoration: none;
+	color: #800080;
+}
+
+H1 {
+        font-family: "Times New Roman";
+        font-size:   24pt;
+        font-weight: bold;
+        line-height: 28pt;
+	text-align:  center;
+}
+
+H2 {
+        font-family:  "Times New Roman";
+        font-size:    18pt;
+        font-weight:  bold;
+        line-height:  22pt;
+}
+
+H3 {
+        font-family:  "Times New Roman";
+        font-size:    14pt;
+        font-weight:  bold;
+}
+
+H4 {
+        font-family:  "Times New Roman";
+        font-size:    12pt;
+        font-weight:  bold;
+}
+
+P.normal {
+        font-family: "Times New Roman";
+        font-size:  12pt;
+}
+
+P.indent {
+        font-family: "Times New Roman";
+        font-size: 12pt;
+        margin-left: 15%;
+        margin-right: 10%;
+}
+
+TABLE {
+        font-family: "Times New Roman";
+        font-size: 12pt;
+}
+
+TD {
+        margin-left: 0%;
+}
+
+OL {
+        font-family: "Times New Roman";
+        font-size: 12pt;
+        margin-left: 10%;
+        margin-right: 10%;
+}
+
+UL {
+        font-family: "Times New Roman";
+        font-size: 12pt;
+        margin-left: 10%;
+        margin-right: 10%;
+}
+
+ADDRESS {
+        font-size: 10pt;
+        line-height: 12pt;
+        font-family: "Times New Roman";
+        font-style: italic;
+        text-align: right;
+        margin-left: 15%;
+        margin-right: 10%;
+}
+
+IMG {
+	float: right;
+}
