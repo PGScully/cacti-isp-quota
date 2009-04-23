@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Cacti ISP Quota</title>
+    <link rel="stylesheet" type="text/css" href="../Scullywag.css">
+  </head>
+  
+  <body>
+    <h1 align="center">Cacti ISP Quota</h1>
+    <hr>
+    <p>
+      This is a template and script for <a href="http://www.cacti.net">Cacti</a> to graph your quota usage for an ISP.
+    </p>
+    <p>
+      <img src="quota.png" alt="Graph of Quota">
+    </p>
+    
+    <h3>Downloads</h3>
+    <p>
+      Download (or fork) the git repository from <a href="http://github.com/Scullywag/cacti-isp-quota/tree/master">GitHub</a>.
+    </p>
+
+    <h3 style="clear:right">Installation</h3>
+    <ol>
+      <li>
+	<p>
+	  Copy get-isp-quota.sh into &lt;path_cacti&gt;/scripts/
+	</p>
+      </li>
+      <li>
+	<p>
+	  Copy ISP_Quota.conf to /etc/cacti, and change ownership and permissions so that Cacti can read it, and no other user
+	  can.  Edit it to contain username and password for the ISP accounts you want to monitor.
+	</p>
+      </li>
+      <li>
+	<p>
+	  Click on Import Templates after opening Cacti in your web browser and select the xml file.
+	  <br>
+	  <strong>Important: Make sure "<em>Use custom RRA settings from the template</em>" is selected.</strong>
+	  <br>
+	  Click on save to import the template.
+	</p>
+      </li>
+      <li>
+	<p>
+	  Create a host and a graph in the usual way, supplying the index ID from the ISP_Quota.conf file.
+	</p>
+      </li>
+    </ol>
+    
+    <h3>Limitations</h3>
+    <ul>
+      <li>
+	<p>
+	  Currently the only ISP supported is <a href="http://www.internode.on.net">Internode.on.net</a>, and unmetered data and
+	  uploads are set to zero until the Internode tools are updated to return this data.
+	<p>
+	  Please <a href="mailto:scullywag@internode.on.net?subject=Cacti%20ISP%20Quota">send me patches</a> for other ISPs; or
+	  fork my <a href="http://github.com/Scullywag/cacti-isp-quota/tree/master">GitHub</a> repository and make your changes
+	  there.
+	</p>
+      </p>
+      </li>
+      <li>
+	<p>
+	  get-isp-quota is a bash script, and will not run with a Windows Cacti install.
+	</p>
+      </li>
+    </ul>
+
+    <hr>
+  </body>
+</html>
