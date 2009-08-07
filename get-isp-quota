@@ -59,22 +59,3 @@ it __name__ == "__main__":
 # echo "usage:$usage limit:$limit unmetered:$unmetered uploads:$uploads"
 
 # ------------------------------------------------------------------------------
-
-# isp_index=$1
-
-# temp=( `grep $isp_index $config_file | grep -v ^#` )
-# isp_name=${temp[1]}
-# username=${temp[2]}
-# password=${temp[3]}
-
-# case $isp_name in
-#     (Internode|internode)
-#         temp=( `wget -q -O - --post-data "username=${username}&password=${password}" --user-agent="Cacti ISP Quota/0.9" https://customer-webtools-api.internode.on.net/cgi-bin/padsl-usage` ) 
-#         usage=${temp[0]}
-#         limit=${temp[1]}
-#         unmetered=0 # Should be NaN, but I like having the black line above my usage.
-#         uploads=0
-#         echo "usage:$usage limit:$limit unmetered:$unmetered uploads:$uploads"
-#         ;;
-# esac
-
