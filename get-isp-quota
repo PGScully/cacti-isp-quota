@@ -1,30 +1,80 @@
-#!/bin/sh
+#! /usr/bin/env python
 
 # Get usage information from Internode's web page.  
+
+# ------------------------------------------------------------------------------
+
+import sys
+import beautifulsoup as bsoup
+
+it __name__ == "__main__":
+# Get arguements
+    try:
+        isp_index = sys.argv[1]
+    except IndexError:
+        sys.exit("Usage: get-isp-quota isp_index")
+
+# Pull username & password from config file
+
+# config_file="/etc/cacti/ISP_Quota.conf"
+
+# user-agent="Cacti ISP Quota/1.0.1"
+
+# Internode:
 #
-# Setup to run once every half hour.
-#
-# Thanks to Troy Dack (troy @ tkdack.com) for the command to query the
-# Internode server and parse the information returned.
-#
+#   Get service ID
+#     https://username:password@customer-webtools-api.internode.on.net/api/v1.5/
+#     <?xml version="1.0" encoding="UTF-8"?>
+#     <internode>
+#       <api>
+#         <services count="1">
+#           <service type="Personal_ADSL" href="/api/v1.5/644383">
+#             644383
+#           </service>
+#         </services>
+#       </api>
+#     </internode>
 
-config_file="/etc/cacti/ISP_Quota.conf"
+#   Get usage for service ID
+#     https://username:password@customer-webtools-api.internode.on.net/api/v1.5/<service_id>/usage
+#     <?xml version="1.0" encoding="UTF-8"?>
+#     <internode>
+#       <api>
+#         <service type="Personal_ADSL" request="usage">
+#           644383
+#         </service>
+#         <traffic name="metered" unit="bytes">
+#           24240944228
+#         </traffic>
+#         <traffic name="unmetered" unit="bytes">
+#           24240944228
+#         </traffic>
+#         <traffic name="total" rollover="2009-08-17" plan-interval="Quarterly" quota="25000000000" unit="bytes">
+#           24240944228
+#         </traffic>
+#       </api>
+#     </internode>
+#   Now that we have the rollover date, we can calculate a target usage from %through the month x quota and return that, too.  Plot that as a line on the graph.
 
-isp_index=$1
+# echo "usage:$usage limit:$limit unmetered:$unmetered uploads:$uploads"
 
-temp=( `grep $isp_index $config_file | grep -v ^#` )
-isp_name=${temp[1]}
-username=${temp[2]}
-password=${temp[3]}
+# ------------------------------------------------------------------------------
 
-case $isp_name in
-    (Internode|internode)
-        temp=( `wget -q -O - --post-data "username=${username}&password=${password}" --user-agent="Cacti ISP Quota/0.9" https://customer-webtools-api.internode.on.net/cgi-bin/padsl-usage` ) 
-        usage=${temp[0]}
-        limit=${temp[1]}
-        unmetered=0 # Should be NaN, but I like having the black line above my usage.
-        uploads=0
-        echo "usage:$usage limit:$limit unmetered:$unmetered uploads:$uploads"
-        ;;
-esac
+# isp_index=$1
+
+# temp=( `grep $isp_index $config_file | grep -v ^#` )
+# isp_name=${temp[1]}
+# username=${temp[2]}
+# password=${temp[3]}
+
+# case $isp_name in
+#     (Internode|internode)
+#         temp=( `wget -q -O - --post-data "username=${username}&password=${password}" --user-agent="Cacti ISP Quota/0.9" https://customer-webtools-api.internode.on.net/cgi-bin/padsl-usage` ) 
+#         usage=${temp[0]}
+#         limit=${temp[1]}
+#         unmetered=0 # Should be NaN, but I like having the black line above my usage.
+#         uploads=0
+#         echo "usage:$usage limit:$limit unmetered:$unmetered uploads:$uploads"
+#         ;;
+# esac
 
