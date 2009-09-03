@@ -7,6 +7,9 @@ import urllib2
 from BeautifulSoup import BeautifulStoneSoup as bsoup
 
 def Internode(username, password):
+    # Constants
+    baseurl = "https://customer-webtools-api.internode.on.net/api/v1.5/"
+
     passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
     passman.add_password(None, baseurl, username, password)
     authhandler = urllib2.HTTPBasicAuthHandler(passman)
@@ -33,7 +36,6 @@ def Internode(username, password):
 # MAIN
 if __name__ == "__main__":
     # Constants
-    baseurl = "https://customer-webtools-api.internode.on.net/api/v1.5/"
     useragent = "Cacti ISP Quota/1.0.1 alpha"
     config_file = "/etc/cacti/ISP_Quota.conf"
 
