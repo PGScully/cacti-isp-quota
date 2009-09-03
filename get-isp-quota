@@ -31,7 +31,7 @@ def Internode(username, password):
     unmetered = "0"
     uploads = "0"
 
-    return [quota, usage, unmetered, uploads]
+    return [usage, quota, unmetered, uploads]
 
 # MAIN
 if __name__ == "__main__":
