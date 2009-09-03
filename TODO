@@ -1,8 +1,14 @@
-TO DO
+* TO DO list
 
-* Add support for other ISPs.
+** Internode
+   - Talk to them about when separate metered and unmetered will be completed in the API.  Also ask about uploads.
 
-* Add query support to list all configured ISPs.
+** Add support for other ISPs.
+   - Will need help from people awith accounts at other ISPs.
 
-* Consider converting to PHP.
+** Add query support to list all configured ISPs.
+   - Want it to work similarly to network interfaces and free disk space currently works.
 
+** Consider converting to PHP.
+   - Eliminate the need for separate binaries.
+   - Remove some cross-platform headaches.
