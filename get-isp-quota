@@ -46,8 +46,8 @@ if __name__ == "__main__":
 #    print soup.prettify()
     soup = soup.internode.api.traffic
 
-    quota = soup["quota"]
-    usage = soup.contents[0]
+    quota = str(int(soup["quota"]) / 1000000)
+    usage = str(int(soup.contents[0]) / 1000000)
     unmetered = "0"
     uploads = "0"
 
