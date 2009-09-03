@@ -6,6 +6,31 @@ import sys
 import urllib2
 from BeautifulSoup import BeautifulStoneSoup as bsoup
 
+def Internode(username, password):
+    passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
+    passman.add_password(None, baseurl, username, password)
+    authhandler = urllib2.HTTPBasicAuthHandler(passman)
+    opener = urllib2.build_opener(authhandler)
+    opener.addheaders = [('User-agent', useragent)]
+    urllib2.install_opener(opener)
+
+    servicedata = urllib2.urlopen(baseurl)
+    soup = bsoup(servicedata.read())
+    serviceid = soup.internode.api.services.service.contents[0]
+
+    trafficdata = urllib2.urlopen(baseurl + serviceid + "/usage/")
+    soup = bsoup(trafficdata.read())
+#    print soup.prettify() # debug
+    soup = soup.internode.api.traffic
+
+    quota = str(int(soup["quota"]) / 1000000)
+    usage = str(int(soup.contents[0]) / 1000000)
+    unmetered = "0"
+    uploads = "0"
+
+    return [quota, usage, unmetered, uploads]
+
+# MAIN
 if __name__ == "__main__":
     # Constants
     baseurl = "https://customer-webtools-api.internode.on.net/api/v1.5/"
@@ -23,36 +48,22 @@ if __name__ == "__main__":
     for line in f:
         data = line.split()
         if len(data) > 0 and data[0] == isp_index:
-            isp_name = data[1]
+            isp_name = data[1].lower()
             username = data[2]
             password = data[3]
             break
     f.close()
 
-# Internode
-    passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    passman.add_password(None, baseurl, username, password)
-    authhandler = urllib2.HTTPBasicAuthHandler(passman)
-    opener = urllib2.build_opener(authhandler)
-    opener.addheaders = [('User-agent', useragent)]
-    urllib2.install_opener(opener)
-    
-    servicedata = urllib2.urlopen(baseurl)
-    soup = bsoup(servicedata.read())
-    serviceid = soup.internode.api.services.service.contents[0]
-
-    trafficdata = urllib2.urlopen(baseurl + serviceid + "/usage/")
-    soup = bsoup(trafficdata.read())
-#    print soup.prettify()
-    soup = soup.internode.api.traffic
-
-    quota = str(int(soup["quota"]) / 1000000)
-    usage = str(int(soup.contents[0]) / 1000000)
-    unmetered = "0"
-    uploads = "0"
+    if isp_name == "internode":
+        usage, quota, unmetered, uploads = Internode(username, password)
+    else:
+        usage = 0
+        quota = 0
+        unmetered = 0
+        uploads = 0
 
     print "usage:" + usage, "limit:" + quota, "unmetered:" + unmetered, "uploads:" + uploads
 
-#   Now that we have the rollover date, we can calculate a target usage from %through the month x quota and return that, too.
-#   Plot that as a line on the graph.
+# Now that we have the rollover date, we can calculate a target usage from %through the month x quota and return that, too.  Plot
+# that as a line on the graph.
 
