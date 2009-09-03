@@ -36,7 +36,7 @@ def Internode(username, password):
 # MAIN
 if __name__ == "__main__":
     # Constants
-    useragent = "Cacti ISP Quota/1.0.1 alpha"
+    useragent = "CactiISPQuota/1.01"
     config_file = "/etc/cacti/ISP_Quota.conf"
 
     # Get arguements
