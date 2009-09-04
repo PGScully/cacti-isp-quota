@@ -239,7 +239,7 @@
 				<task_item_id>hash_08001800dbec3d2af93443f948e82da9e8a111</task_item_id>
 				<color_id>000000</color_id>
 				<alpha>FF</alpha>
-				<graph_type_id>5</graph_type_id>
+				<graph_type_id>4</graph_type_id>
 				<consolidation_function_id>4</consolidation_function_id>
 				<cdef_id>hash_050018a7428ead4dd854cf993c620511509caa</cdef_id>
 				<value></value>
@@ -423,7 +423,7 @@
 	<hash_0300180b63c185386d40b01dbf455b419757fd>
 		<name>ISP - Get Quota</name>
 		<type_id>1</type_id>
-		<input_string>/bin/bash &lt;path_cacti&gt;/scripts/get-isp-quota.sh &lt;ISP_Key&gt;</input_string>
+		<input_string>/usr/bin/python &lt;path_cacti&gt;/scripts/get-isp-quota &lt;ISP_Key&gt;</input_string>
 		<fields>
 			<hash_0700187185fd74fa24bf61996acc5b6fe26b19>
 				<name>ISP key in config file</name>
