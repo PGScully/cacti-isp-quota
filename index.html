@@ -24,13 +24,19 @@
     <ol>
       <li>
 	<p>
+	  <a href="http://www.python.org/">Python</a> and
+	  the <a href="http://www.crummy.com/software/BeautifulSoup/">BeaitifulSoup</a> library are required.
+	</p>
+      </li>
+      <li>
+	<p>
 	  Copy get-isp-quota.sh into &lt;path_cacti&gt;/scripts/
 	</p>
       </li>
       <li>
 	<p>
-	  Copy ISP_Quota.conf to /etc/cacti, and change ownership and permissions so that Cacti can read it, and no other user
-	  can.  Edit it to contain username and password for the ISP accounts you want to monitor.
+	  Copy ISP_Quota.conf to /etc/cacti/ISP_Quota.conf, and change ownership and permissions so that Cacti can read it, and no
+	  other user can.  Edit it to contain username and password for the ISP accounts you want to monitor.
 	</p>
       </li>
       <li>
@@ -64,7 +70,8 @@
       </li>
       <li>
 	<p>
-	  get-isp-quota is a bash script, and will not run with a Windows Cacti install.
+	  get-isp-quota is a Python program, and should run on Windows with minimal modification (change the location of the
+	  ISP_Quota.conf file).
 	</p>
       </li>
     </ul>
