@@ -10,6 +10,7 @@ def Internode(username, password):
     # Constants
     baseurl = "https://customer-webtools-api.internode.on.net/api/v1.5/"
 
+    # Setup Connection
     passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
     passman.add_password(None, baseurl, username, password)
     authhandler = urllib2.HTTPBasicAuthHandler(passman)
@@ -17,21 +18,32 @@ def Internode(username, password):
     opener.addheaders = [('User-agent', useragent)]
     urllib2.install_opener(opener)
 
+    # Get ServiceID
     servicedata = urllib2.urlopen(baseurl)
     soup = bsoup(servicedata.read())
+    if debug:
+        print "DEBUG: servicedata: " + soup.prettify()
     serviceid = soup.internode.api.services.service.contents[0]
+    if debug:
+        print "DEBUG: serviceid: " + serviceid
 
+    # Get Usage Data
     trafficdata = urllib2.urlopen(baseurl + serviceid + "/usage/")
     soup = bsoup(trafficdata.read())
-# -----
-#    print soup.prettify() # uncomment for debug info.
-# -----
+    if debug:
+        print "DEBUG: trafficdata: " + soup.prettify()
+
     soup = soup.internode.api.traffic
 
-    quota = str(int(soup["quota"]) / 1000000)
     usage = str(int(soup.contents[0]) / 1000000)
+    quota = str(int(soup["quota"]) / 1000000)
     unmetered = "0"
     uploads = "0"
+    if debug:
+        print "DEBUG: usage: " + usage
+        print "DEBUG: quota: " + quota
+        print "DEBUG: unmetered: " + unmetered
+        print "DEBUG: uploads: " + uploads
 
     return [usage, quota, unmetered, uploads]
 
@@ -40,6 +52,8 @@ if __name__ == "__main__":
     # Constants
     useragent = "CactiISPQuota/1.01"
     config_file = "/etc/cacti/ISP_Quota.conf"
+
+    debug = True
 
     # Get arguements
     try:
@@ -58,6 +72,11 @@ if __name__ == "__main__":
             break
     f.close()
 
+    if debug:
+        print "DEBUG: username: " + username
+        print "DEBUG: password: " + password
+        print "DEBUG: isp_name: " + isp_name
+
     # Calculate usage
     if isp_name == "internode":
         usage, quota, unmetered, uploads = Internode(username, password)
@@ -68,7 +87,3 @@ if __name__ == "__main__":
         uploads = 0
 
     print "usage:" + usage, "limit:" + quota, "unmetered:" + unmetered, "uploads:" + uploads
-
-# Now that we have the rollover date, we can calculate a target usage from %through the month x quota and return that, too.  Plot
-# that as a line on the graph.
-
