@@ -1,14 +1,24 @@
 * TO DO list
 
 ** Internode
-   - Talk to them about when separate metered and unmetered will be completed in the API.  Also ask about uploads.
+   - [ ] Talk to them about when separate metered and unmetered will be
+	 completed in the API.  Also ask about uploads.
 
-** Add support for other ISPs.
-   - Will need help from people awith accounts at other ISPs.
+** Add support for other ISPs
+   - Will need help from people with accounts at other ISPs.
 
-** Add query support to list all configured ISPs.
-   - Want it to work similarly to network interfaces and free disk space currently works.
+* Possible future plans?
 
-** Consider converting to PHP.
+** Add query support to list all configured ISPs
+   - Want it to work similarly to network interfaces and free disk space
+     currently works.
+
+** Consider converting to PHP
    - Eliminate the need for separate binaries.
    - Remove some cross-platform headaches.
+
+* Emacs mode setup
+Local Variables:
+mode: org
+fill-column: 80
+End:
