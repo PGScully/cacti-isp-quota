@@ -23,9 +23,6 @@ def Internode(username, password):
 
     trafficdata = urllib2.urlopen(baseurl + serviceid + "/usage/")
     soup = bsoup(trafficdata.read())
-# -----
-#    print soup.prettify() # uncomment for debug info.
-# -----
     soup = soup.internode.api.traffic
 
     quota = str(int(soup["quota"]) / 1000000)
