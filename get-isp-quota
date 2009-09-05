@@ -23,7 +23,9 @@ def Internode(username, password):
 
     trafficdata = urllib2.urlopen(baseurl + serviceid + "/usage/")
     soup = bsoup(trafficdata.read())
-    print soup.prettify() # uncomment for debug info.
+# -----
+#    print soup.prettify() # uncomment for debug info.
+# -----
     soup = soup.internode.api.traffic
 
     quota = str(int(soup["quota"]) / 1000000)
@@ -56,6 +58,7 @@ if __name__ == "__main__":
             break
     f.close()
 
+    # Calculate usage
     if isp_name == "internode":
         usage, quota, unmetered, uploads = Internode(username, password)
     else:
