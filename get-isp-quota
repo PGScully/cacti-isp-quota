@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     if debug:
         print "DEBUG: username: " + username
-        print "DEBUG: password: " + password
+        print "DEBUG: password: [HIDDEN]" # + password
         print "DEBUG: isp_name: " + isp_name
 
     # Calculate usage
