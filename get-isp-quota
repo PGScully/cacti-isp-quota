@@ -6,29 +6,66 @@ import sys
 import urllib2
 from BeautifulSoup import BeautifulStoneSoup as bsoup
 
+def Debug(message):
+    debug = False
+
+    if debug:
+        for line in message.splitlines():
+            print "DEBUG: " + line
+
 def Internode(username, password):
     # Constants
-    baseurl = "https://customer-webtools-api.internode.on.net/api/v1.5/"
+    baseurl = "https://customer-webtools-api.internode.on.net"
+    apiloc = "/api/v1.5/"
 
+    # Initial Values
+    usage = "0"
+    quota = "0"
+    unmetered = "0"
+    uploads = "0"
+
+    # Setup Connection
     passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    passman.add_password(None, baseurl, username, password)
+    passman.add_password(None, baseurl + apiloc, username, password)
     authhandler = urllib2.HTTPBasicAuthHandler(passman)
     opener = urllib2.build_opener(authhandler)
     opener.addheaders = [('User-agent', useragent)]
     urllib2.install_opener(opener)
 
-    servicedata = urllib2.urlopen(baseurl)
+    # Get ServiceID
+    servicedata = urllib2.urlopen(baseurl + apiloc)
     soup = bsoup(servicedata.read())
-    serviceid = soup.internode.api.services.service.contents[0]
+    Debug("servicedata:\n" + soup.prettify())
+    serviceloc = soup.internode.api.services.service["href"] # API supports multiple services; only using the first one.  What
+                                                             # will happen if I get multiple?
+    Debug("serviceloc:\n" + serviceloc)
 
-    trafficdata = urllib2.urlopen(baseurl + serviceid + "/usage/")
-    soup = bsoup(trafficdata.read())
-    soup = soup.internode.api.traffic
+    # Get Service Info
+    servicelist = urllib2.urlopen(baseurl + serviceloc)
+    soup = bsoup(servicelist.read())
+    for resource in soup.internode.api.resources:
+        Debug("resource:\n" + resource.prettify())
+        if resource.contents[0] == "usage":
+            usageloc = resource["href"]
+            Debug("usageloc: " + usageloc)
 
-    quota = str(int(soup["quota"]) / 1000000)
-    usage = str(int(soup.contents[0]) / 1000000)
-    unmetered = "0"
-    uploads = "0"
+            # Get Usage Data
+            trafficdata = urllib2.urlopen(baseurl + usageloc)
+            soup = bsoup(trafficdata.read())
+            Debug("trafficdata:\n" + soup.prettify())
+
+            # In future will need to loop through traffic list to find uploads and downloads as well as total traffic.  Waiting
+            # for Internode to implement this part of the API.
+            soup = soup.internode.api.traffic
+
+            usage = str(int(soup.contents[0]) / 1000000)
+            quota = str(int(soup["quota"]) / 1000000)
+            break
+
+    Debug("usage: " + usage)
+    Debug("quota: " + quota)
+    Debug("unmetered: " + unmetered)
+    Debug("uploads: " + uploads)
 
     return [usage, quota, unmetered, uploads]
 
@@ -55,6 +92,10 @@ if __name__ == "__main__":
             break
     f.close()
 
+    Debug("username: " + username)
+    Debug("password: [HIDDEN]") # + password
+    Debug("isp_name: " + isp_name)
+
     # Calculate usage
     if isp_name == "internode":
         usage, quota, unmetered, uploads = Internode(username, password)
@@ -65,7 +106,3 @@ if __name__ == "__main__":
         uploads = 0
 
     print "usage:" + usage, "limit:" + quota, "unmetered:" + unmetered, "uploads:" + uploads
-
-# Now that we have the rollover date, we can calculate a target usage from %through the month x quota and return that, too.  Plot
-# that as a line on the graph.
-

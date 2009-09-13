@@ -1,8 +1,8 @@
-Put get-isp-quota int <path_cacti>/scripts/
+Put get-isp-quota in <path_cacti>/scripts/
 
-Copy ISP_Quota.conf to /etc/cacti, and change ownership and permissions so that
-Cacti can read it, and no other user can.  Edit it to contain username and
-password for the ISP accounts you want to monitor.
+Copy ISP_Quota.conf to /etc/cacti/ISP_Quota.conf, and change ownership and
+permissions so that Cacti can read it, and no other user can.  Edit it to
+contain username and password for the ISP accounts you want to monitor.
 
 Click on Import Templates after opening Cacti in your web browser and select the
 xml file.  IMPORTANT: Select "Use custom RRA settings from the template".  Click
