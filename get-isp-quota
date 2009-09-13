@@ -6,10 +6,12 @@ import sys
 import urllib2
 from BeautifulSoup import BeautifulStoneSoup as bsoup
 
-def Debug(message):
-    debug = False
+def Debug(message, spacer=False):
+    debug = True
 
     if debug:
+        if spacer:
+            print
         for line in message.splitlines():
             print "DEBUG: " + line
 
@@ -35,7 +37,7 @@ def Internode(username, password):
     # Get ServiceID
     servicedata = urllib2.urlopen(baseurl + apiloc)
     soup = bsoup(servicedata.read())
-    Debug("servicedata:\n" + soup.prettify())
+    Debug("servicedata:\n" + soup.prettify(), True)
     serviceloc = soup.internode.api.services.service["href"] # API supports multiple services; only using the first one.  What
                                                              # will happen if I get multiple?
     Debug("serviceloc:\n" + serviceloc)
@@ -44,7 +46,7 @@ def Internode(username, password):
     servicelist = urllib2.urlopen(baseurl + serviceloc)
     soup = bsoup(servicelist.read())
     for resource in soup.internode.api.resources:
-        Debug("resource:\n" + resource.prettify())
+        Debug("resource:\n" + resource.prettify(), True)
         if resource.contents[0] == "usage":
             usageloc = resource["href"]
             Debug("usageloc: " + usageloc)
@@ -52,7 +54,7 @@ def Internode(username, password):
             # Get Usage Data
             trafficdata = urllib2.urlopen(baseurl + usageloc)
             soup = bsoup(trafficdata.read())
-            Debug("trafficdata:\n" + soup.prettify())
+            Debug("trafficdata:\n" + soup.prettify(), True)
 
             # In future will need to loop through traffic list to find uploads and downloads as well as total traffic.  Waiting
             # for Internode to implement this part of the API.
@@ -62,7 +64,7 @@ def Internode(username, password):
             quota = str(int(soup["quota"]) / 1000000)
             break
 
-    Debug("usage: " + usage)
+    Debug("usage: " + usage, True)
     Debug("quota: " + quota)
     Debug("unmetered: " + unmetered)
     Debug("uploads: " + uploads)
