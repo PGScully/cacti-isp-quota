@@ -11,7 +11,7 @@ def Debug(message, spacer=False):
 
     if debug:
         if spacer:
-            print
+            print "DEBUG:"
         for line in message.splitlines():
             print "DEBUG: " + line
 
@@ -74,8 +74,17 @@ def Internode(username, password):
 # MAIN
 if __name__ == "__main__":
     # Constants
-    useragent = "CactiISPQuota/1.01"
+    useragent = "CactiISPQuota/1.01 (dev)"
     config_file = "/etc/cacti/ISP_Quota.conf"
+
+    # Default values
+    isp_name = "[Unknown]"
+    username = "[Unknown]"
+    password = "[Unknown]"
+    usage = "NaN"
+    quota = "NaN"
+    unmetered = "NaN"
+    uploads = "NaN"
 
     # Get arguements
     try:
@@ -83,28 +92,31 @@ if __name__ == "__main__":
     except IndexError:
         sys.exit("Usage: get-isp-quota isp_index")
 
-    # Pull username & password from config file
-    f = open(config_file)
-    for line in f:
-        data = line.split()
-        if len(data) > 0 and data[0] == isp_index:
-            isp_name = data[1].lower()
-            username = data[2]
-            password = data[3]
-            break
-    f.close()
+    # Pull isp_name, username & password from config file
+    try:
+        f = open(config_file)
+        for line in f:
+            data = line.split()
+            if len(data) > 0 and data[0] == isp_index:
+                isp_name = data[1].lower()
+                username = data[2]
+                password = data[3]
+                break
+        f.close()
+    except IOError:
+        sys.exit("Error opening config file: " + config_file)
 
-    Debug("username: " + username)
-    Debug("password: [HIDDEN]") # + password
-    Debug("isp_name: " + isp_name)
+    if isp_name == "[Unknown]":
+        Debug("Can't find '" + isp_index + "' in " + config_file)
+    else:
+        Debug("username: " + username)
+        Debug("password: [HIDDEN]") # + password
+        Debug("isp_name: " + isp_name)
 
     # Calculate usage
     if isp_name == "internode":
         usage, quota, unmetered, uploads = Internode(username, password)
     else:
-        usage = 0
-        quota = 0
-        unmetered = 0
-        uploads = 0
+        Debug("Unknown/Unimplemented ISP: " + isp_name, True)
 
     print "usage:" + usage, "limit:" + quota, "unmetered:" + unmetered, "uploads:" + uploads
