@@ -4,7 +4,7 @@
 
 import sys
 import urllib2
-from BeautifulSoup import BeautifulStoneSoup as bsoup
+from BeautifulSoup import BeautifulStoneSoup as stonesoup
 
 def Debug(message, spacer=False):
     debug = True
@@ -21,10 +21,11 @@ def Internode(username, password):
     apiloc = "/api/v1.5/"
 
     # Initial Values
-    usage = "0"
-    quota = "0"
-    unmetered = "0"
-    uploads = "0"
+    metered = "NaN"
+    unmetered = "NaN"
+    total = "NaN"
+    quota = "NaN"
+    uploads = "NaN"
 
     # Setup Connection
     passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
@@ -36,7 +37,7 @@ def Internode(username, password):
 
     # Get ServiceID
     servicedata = urllib2.urlopen(baseurl + apiloc)
-    soup = bsoup(servicedata.read())
+    soup = stonesoup(servicedata.read())
     Debug("servicedata:\n" + soup.prettify(), True)
     serviceloc = soup.internode.api.services.service["href"] # API supports multiple services; only using the first one.  What
                                                              # will happen if I get multiple?
@@ -44,7 +45,7 @@ def Internode(username, password):
 
     # Get Service Info
     servicelist = urllib2.urlopen(baseurl + serviceloc)
-    soup = bsoup(servicelist.read())
+    soup = stonesoup(servicelist.read())
     for resource in soup.internode.api.resources:
         Debug("resource:\n" + resource.prettify(), True)
         if resource.contents[0] == "usage":
@@ -53,23 +54,35 @@ def Internode(username, password):
 
             # Get Usage Data
             trafficdata = urllib2.urlopen(baseurl + usageloc)
-            soup = bsoup(trafficdata.read())
+            soup = stonesoup(trafficdata.read())
             Debug("trafficdata:\n" + soup.prettify(), True)
 
-            # In future will need to loop through traffic list to find uploads and downloads as well as total traffic.  Waiting
-            # for Internode to implement this part of the API.
-            soup = soup.internode.api.traffic
+            for item in soup.internode.api:
+                if item.name == "traffic":
+                    Debug(item.prettify())
+                    if item["name"] == "total":
+                        total = str(int(item.contents[0]) / 1000000)
+                        quota = str(int(item["quota"]) / 1000000)
+                    elif item["name"] == "metered":
+                        metered = str(int(item.contents[0]) / 1000000)
+                    elif item["name"] == "unmetered":
+                        unmetered = str(int(item.contents[0]) / 1000000)
 
-            usage = str(int(soup.contents[0]) / 1000000)
-            quota = str(int(soup["quota"]) / 1000000)
             break
 
-    Debug("usage: " + usage, True)
-    Debug("quota: " + quota)
+    Debug("metered: " + metered, True)
     Debug("unmetered: " + unmetered)
+    Debug("total: " + total)
+    Debug("quota: " + quota)
     Debug("uploads: " + uploads)
 
-    return [usage, quota, unmetered, uploads]
+    # temporary fix for values not yet returned by the Internode API v1.5
+    if metered == "NaN":
+        metered = total
+    if unmetered == "NaN":
+        unmetered = "0"
+
+    return [metered, quota, unmetered, uploads]
 
 # MAIN
 if __name__ == "__main__":
