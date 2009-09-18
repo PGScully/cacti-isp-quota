@@ -89,7 +89,7 @@ def Internode(username, password):
 # MAIN
 if __name__ == "__main__":
     # Constants
-    useragent = "CactiISPQuota/1.01"
+    useragent = "CactiISPQuota/1.01 (beta-1)"
     config_file = "/etc/cacti/ISP_Quota.conf"
 
     # Default values
