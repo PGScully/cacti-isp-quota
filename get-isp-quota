@@ -8,7 +8,7 @@
 import sys
 import logging
 import urllib2
-from BeautifulSoup import BeautifulStoneSoup as stonesoup
+from bs4 import BeautifulSoup
 
 def Debug(message, spacer=False):
     debug = False
@@ -41,7 +41,7 @@ def Internode(username, password):
 
     # Get ServiceID
     servicedata = urllib2.urlopen(baseurl + apiloc)
-    soup = stonesoup(servicedata.read())
+    soup = BeautifulSoup(servicedata.read())
     Debug("servicedata:\n" + soup.prettify(), True)
     serviceloc = soup.internode.api.services.service["href"] # Internode's API supports multiple services; I'm only using the
                                                              # first one.  What will happen if I get multiple?
@@ -49,7 +49,7 @@ def Internode(username, password):
 
     # Get Service Info
     servicelist = urllib2.urlopen(baseurl + serviceloc)
-    soup = stonesoup(servicelist.read())
+    soup = BeautifulSoup(servicelist.read())
     for resource in soup.internode.api.resources:
         Debug("resource:\n" + resource.prettify(), True)
         if resource.contents[0] == "usage":
@@ -59,7 +59,7 @@ def Internode(username, password):
 
     # Get Usage Data
     trafficdata = urllib2.urlopen(baseurl + usageloc)
-    soup = stonesoup(trafficdata.read())
+    soup = BeautifulSoup(trafficdata.read())
     Debug("trafficdata:\n" + soup.prettify(), True)
 
     for item in soup.internode.api:
