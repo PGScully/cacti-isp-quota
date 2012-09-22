@@ -87,8 +87,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Constants
 useragent = "CactiISPQuota/1.01 (beta-1)"
-config_file = "ISP_Quota.local"
-#config_file = "/etc/cacti/ISP_Quota.conf"
+config_file = "/etc/cacti/ISP_Quota.conf"
 
 # Default values
 isp_name = "[Unknown]"
