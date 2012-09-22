@@ -10,15 +10,6 @@ import logging
 import urllib2
 from bs4 import BeautifulSoup
 
-def Debug(message, spacer=False):
-    debug = False
-
-    if debug:
-        if spacer:
-            logging.debug("")
-        for line in message.splitlines():
-            logging.debug(line)
-
 def Internode(username, password):
     # Constants
     baseurl = "https://customer-webtools-api.internode.on.net"
@@ -42,29 +33,29 @@ def Internode(username, password):
     # Get ServiceID
     servicedata = urllib2.urlopen(baseurl + apiloc)
     soup = BeautifulSoup(servicedata.read())
-    Debug("servicedata:\n" + soup.prettify(), True)
+    logging.debug("servicedata:\n" + soup.prettify())
     serviceloc = soup.internode.api.services.service["href"] # Internode's API supports multiple services; I'm only using the
                                                              # first one.  What will happen if I get multiple?
-    Debug("serviceloc:\n" + serviceloc)
+    logging.debug("serviceloc:" + serviceloc)
 
     # Get Service Info
     servicelist = urllib2.urlopen(baseurl + serviceloc)
     soup = BeautifulSoup(servicelist.read())
     for resource in soup.internode.api.resources:
-        Debug("resource:\n" + resource.prettify(), True)
+        logging.debug("resource:\n" + resource.prettify())
         if resource.contents[0] == "usage":
             usageloc = resource["href"]
-            Debug("usageloc: " + usageloc)
+            logging.debug("usageloc: " + usageloc)
             break
 
     # Get Usage Data
     trafficdata = urllib2.urlopen(baseurl + usageloc)
     soup = BeautifulSoup(trafficdata.read())
-    Debug("trafficdata:\n" + soup.prettify(), True)
+    logging.debug("trafficdata:\n" + soup.prettify())
 
     for item in soup.internode.api:
         if item.name == "traffic":
-            Debug(item.prettify())
+            logging.debug("Traffic:\n" + item.prettify())
             if item["name"] == "total":
                 total = str(int(item.contents[0]) / 1000000)
                 quota = str(int(item["quota"]) / 1000000)
@@ -73,11 +64,11 @@ def Internode(username, password):
             elif item["name"] == "unmetered":
                 unmetered = str(int(item.contents[0]) / 1000000)
 
-    Debug("metered: " + metered, True)
-    Debug("unmetered: " + unmetered)
-    Debug("total: " + total)
-    Debug("quota: " + quota)
-    Debug("uploads: " + uploads)
+    logging.debug("metered: " + metered)
+    logging.debug("unmetered: " + unmetered)
+    logging.debug("total: " + total)
+    logging.debug("quota: " + quota)
+    logging.debug("uploads: " + uploads)
 
     # Temporary fix for values not yet returned by the Internode API v1.5
     if metered == "NaN":
@@ -90,6 +81,9 @@ def Internode(username, password):
 ########
 # MAIN #
 ########
+
+# Set up debug level (default level is WARNING)
+logging.basicConfig(level=logging.DEBUG)
 
 # Constants
 useragent = "CactiISPQuota/1.01 (beta-1)"
@@ -125,16 +119,16 @@ except IOError:
     sys.exit("Error opening config file: " + config_file)
 
 if isp_name == "[Unknown]":
-    Debug("Can't find '" + isp_index + "' in " + config_file)
+    logging.debug("Can't find '" + isp_index + "' in " + config_file)
 else:
-    Debug("username: " + username)
-    Debug("password: [HIDDEN]") # + password
-    Debug("isp_name: " + isp_name)
+    logging.debug("username: " + username)
+    logging.debug("password: [HIDDEN]") # + password
+    logging.debug("isp_name: " + isp_name)
 
 # Calculate usage
 if isp_name == "internode":
     usage, quota, unmetered, uploads = Internode(username, password)
 else:
-    Debug("Unknown/Unimplemented ISP: " + isp_name, True)
+    logging.debug("Unknown/Unimplemented ISP: " + isp_name)
 
 print "usage:" + usage, "limit:" + quota, "unmetered:" + unmetered, "uploads:" + uploads
