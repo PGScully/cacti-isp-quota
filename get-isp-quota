@@ -64,11 +64,11 @@ def Internode(username, password):
             elif item["name"] == "unmetered":
                 unmetered = str(int(item.contents[0]) / 1000000)
 
-    logging.debug("metered: " + metered)
-    logging.debug("unmetered: " + unmetered)
-    logging.debug("total: " + total)
-    logging.debug("quota: " + quota)
-    logging.debug("uploads: " + uploads)
+    logging.info("metered: " + metered)
+    logging.info("unmetered: " + unmetered)
+    logging.info("total: " + total)
+    logging.info("quota: " + quota)
+    logging.info("uploads: " + uploads)
 
     # Temporary fix for values not yet returned by the Internode API v1.5
     if metered == "NaN":
