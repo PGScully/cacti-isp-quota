@@ -87,7 +87,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Constants
 useragent = "CactiISPQuota/1.01 (beta-1)"
-config_file = "/etc/cacti/ISP_Quota.conf"
+config_file = "ISP_Quota.local"
+#config_file = "/etc/cacti/ISP_Quota.conf"
 
 # Default values
 isp_name = "[Unknown]"
@@ -119,7 +120,7 @@ except IOError:
     sys.exit("Error opening config file: " + config_file)
 
 if isp_name == "[Unknown]":
-    logging.debug("Can't find '" + isp_index + "' in " + config_file)
+    logging.error("Can't find '" + isp_index + "' in " + config_file)
 else:
     logging.debug("username: " + username)
     logging.debug("password: [HIDDEN]") # + password
@@ -129,6 +130,6 @@ else:
 if isp_name == "internode":
     usage, quota, unmetered, uploads = Internode(username, password)
 else:
-    logging.debug("Unknown/Unimplemented ISP: " + isp_name)
+    logging.error("Unknown/Unimplemented ISP: " + isp_name)
 
 print "usage:" + usage, "limit:" + quota, "unmetered:" + unmetered, "uploads:" + uploads
