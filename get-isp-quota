@@ -83,7 +83,7 @@ def Internode(username, password):
 ########
 
 # Set up debug level (default level is WARNING)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
 
 # Constants
 useragent = "CactiISPQuota/1.01 (beta-1)"
