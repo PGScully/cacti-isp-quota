@@ -34,8 +34,7 @@ def Internode(username, password):
     servicedata = urllib2.urlopen(baseurl + apiloc)
     soup = BeautifulSoup(servicedata.read())
     logging.debug("servicedata:\n" + soup.prettify())
-    serviceloc = soup.internode.api.services.service["href"] # Internode's API supports multiple services; I'm only using the
-                                                             # first one.  What will happen if I get multiple?
+    serviceloc = soup.internode.api.services.service["href"] # TODO: Internode's API supports multiple services; I'm only using the first one.  What will happen if I get multiple?
     logging.debug("serviceloc:" + serviceloc)
 
     # Get Service Info
